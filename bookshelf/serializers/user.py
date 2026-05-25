@@ -18,12 +18,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
-        validated_data.pop('password2')  # remove antes de criar
+        validated_data.pop('password2')  
         return User.objects.create_user(**validated_data)
 
 
 class UserSerializer(serializers.ModelSerializer):
-    full_name = serializers.CharField(read_only=True)  # property do model
+    full_name = serializers.CharField(read_only=True)  
 
     class Meta:
         model  = User
