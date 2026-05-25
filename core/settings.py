@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bookshelf.apps.BookshelfConfig',
+    'rest_framework'
 ]
 
 AUTH_USER_MODEL = 'bookshelf.User'
@@ -106,6 +107,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# JWT Authentication
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),  
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),   
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
