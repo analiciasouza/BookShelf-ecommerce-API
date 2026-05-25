@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from bookshelf.ultils import IsOwner
 
 class OrderItemViewSet(viewsets.ModelViewSet):
-    permission_classes = [ IsAuthenticated, IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner]
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
     
