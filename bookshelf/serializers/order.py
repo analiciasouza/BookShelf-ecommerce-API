@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models.order import Order, OrderItem, Address
+from bookshelf.models.order import Order, OrderItem, Address
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:

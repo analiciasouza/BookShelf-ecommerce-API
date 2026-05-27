@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from bookshelf.ultils import IsOwner
-from models.user import User
-from serializers.user import UserSerializer, RegisterSerializer
+from bookshelf.models.user import User
+from bookshelf.serializers.user import UserSerializer, RegisterSerializer
 
 class RegisterUserView(APIView):
     permission_classes = [AllowAny]

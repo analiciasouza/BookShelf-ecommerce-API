@@ -11,7 +11,6 @@ from bookshelf.views.user import RegisterUserView, LoginUserView, UserView
 
 
 router = DefaultRouter()
-router.register(r'books', BookView, basename='book')
 router.register(r'orders', OrderViewSet, basename='order')
 router.register(r'order-items', OrderItemViewSet, basename='order-item')
 router.register(r'addresses', AddressViewSet, basename='address')
@@ -19,6 +18,7 @@ router.register(r'addresses', AddressViewSet, basename='address')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('books/', BookView.as_view()),
     path('auth/register/', RegisterUserView.as_view()),
     path('auth/login/',    LoginUserView.as_view()),
     path('auth/refresh/',  TokenRefreshView.as_view()),  
