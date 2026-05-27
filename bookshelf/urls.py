@@ -12,7 +12,6 @@ from bookshelf.views.user import RegisterUserView, LoginUserView, UserView
 
 router = DefaultRouter()
 router.register(r'orders', OrderViewSet, basename='order')
-router.register(r'order-items', OrderItemViewSet, basename='order-item')
 router.register(r'addresses', AddressViewSet, basename='address')
 
 
