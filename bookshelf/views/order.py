@@ -48,7 +48,7 @@ class OrderViewSet(viewsets.ModelViewSet):
                 total += book.price * item_data['quantity']
 
        
-            order.total = total + order.shipping_fee
+            order.total = total + 2.00
             order.status = 'confirmed'
             order.save()
 

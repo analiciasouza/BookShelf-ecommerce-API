@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models.payment import PaymentMethod, Payment
+from bookshelf.models.payment import PaymentMethod, Payment
 
 
 
