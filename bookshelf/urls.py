@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from bookshelf.views.book import BookView, BookDetailView
 from bookshelf.views.order import AddressViewSet, OrderViewSet
+from bookshelf.views.payment import PaymentViewSet
 
 from rest_framework_simplejwt.views import TokenRefreshView
 from bookshelf.views.user import RegisterUserView, LoginUserView, UserView
@@ -12,6 +13,7 @@ from bookshelf.views.user import RegisterUserView, LoginUserView, UserView
 
 router = DefaultRouter()
 router.register(r'orders', OrderViewSet, basename='order')
+router.register(f'payments', PaymentViewSet, basename='payment' )
 router.register(r'addresses', AddressViewSet, basename='address')
 
 
