@@ -2,7 +2,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from bookshelf.views.book import BookView
-from bookshelf.views.order import AddressViewSet, OrderItemViewSet, OrderViewSet
+from bookshelf.views.order import AddressViewSet, OrderViewSet
 
 from rest_framework_simplejwt.views import TokenRefreshView
 from bookshelf.views.user import RegisterUserView, LoginUserView, UserView
