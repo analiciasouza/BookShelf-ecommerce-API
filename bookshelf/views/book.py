@@ -1,5 +1,5 @@
 from bookshelf.models.book import Book
-from bookshelf.serializers.book import BookSerialzier
+from bookshelf.serializers.book import BookSerializer
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
@@ -8,11 +8,11 @@ from rest_framework.permissions import IsAuthenticated
 class BookView(APIView):
     permission_classes = [IsAuthenticated]
     queryset = Book.objects.all()
-    serializer_class = BookSerialzier
+    serializer_class = BookSerializer
     
     def get(self, request, format=None):
         query = self.queryset
-        serializer = BookSerialzier(query, many=True)
+        serializer = BookSerializer(query, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     
@@ -20,13 +20,13 @@ class BookView(APIView):
 class BookDetailView(APIView):
     permission_classes = [IsAuthenticated]
     queryset = Book.objects.all()
-    serializer_class = BookSerialzier
+    serializer_class = BookSerializer
     
     
     def get(self, request, book_id):
         try:
             book = Book.objects.get(id=book_id)
-            serializer = BookSerialzier(book)
+            serializer = BookSerializer(book)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         except Book.DoesNotExist:
