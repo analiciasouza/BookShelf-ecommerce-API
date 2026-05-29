@@ -7,22 +7,27 @@ from rest_framework.permissions import IsAuthenticated
 
 class BookView(APIView):
     permission_classes = [IsAuthenticated]
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    
-    def get(self, request, format=None):
-        query = self.queryset
-        serializer = BookSerializer(query, many=True)
+
+    def get(self, request, pk=None, *args, **kwargs):
+        if pk is not None:
+            try:
+                book = Book.objects.get(pk=pk)
+                serializer = BookSerializer(book)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except Book.DoesNotExist:
+                return Response(
+                    {'error': 'Livro não encontrado.'}, 
+                    status=status.HTTP_404_NOT_FOUND
+                )
+
+        books = Book.objects.all() 
+        serializer = BookSerializer(books, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     
 
 class BookDetailView(APIView):
     permission_classes = [IsAuthenticated]
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    
-    
     def get(self, request, book_id):
         try:
             book = Book.objects.get(id=book_id)
